@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nala Cursos 🚀</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #06142a, #02050a);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+
+    header h1 {
+      color: #00aaff;
+      font-size: 26px;
+      text-shadow: 0 0 10px rgba(0, 170, 255, 0.6);
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    nav a:hover {
+      color: #00aaff;
+      text-shadow: 0 0 8px rgba(0, 170, 255, 0.6);
+    }
+
+    section {
+      padding: 120px 8% 80px;
+      min-height: 100vh;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 120px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 520px;
+    }
+
+    .hero-text h2 {
+      font-size: 44px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h2 span {
+      color: #00aaff;
+      text-shadow: 0 0 10px rgba(0, 170, 255, 0.7);
+    }
+
+    .hero-text p {
+      color: #cfeaff;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 26px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+      font-size: 15px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00aaff, #0066ff);
+      color: white;
+      box-shadow: 0 0 20px rgba(0, 170, 255, 0.6);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 170, 255, 0.9);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid #00aaff;
+      color: #00aaff;
+    }
+
+    .btn-secondary:hover {
+      background: #00aaff;
+      color: black;
+      transform: translateY(-3px) scale(1.05);
+    }
+
+    /* ===== SCAR ===== */
+    .scar-container {
+      position: relative;
+      width: 280px;
+      height: 320px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .scar {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #0b2a44, #00111f);
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 40px rgba(0, 170, 255, 0.6);
+    }
+
+    .scar .face {
+      width: 140px;
+      height: 80px;
+      background: black;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin-bottom: 10px;
+      box-shadow: inset 0 0 15px rgba(0, 170, 255, 0.4);
+    }
+
+    .scar .eye {
+      width: 18px;
+      height: 18px;
+      background: #00aaff;
+      border-radius: 50%;
+      animation: blink 4s infinite;
+    }
+
+    .scar .mouth {
+      width: 40px;
+      height: 8px;
+      background: #00aaff;
+      border-radius: 10px;
+    }
+
+    .scar .glasses {
+      position: absolute;
+      top: 90px;
+      width: 180px;
+      height: 60px;
+      border: 3px solid #00aaff;
+      border-radius: 30px;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    .scar .glass {
+      width: 60px;
+      height: 35px;
+      background: rgba(0, 170, 255, 0.15);
+      border-radius: 10px;
+      box-shadow: inset 0 0 10px rgba(0, 170, 255, 0.4);
+    }
+
+    .scar .coffee {
+      position: absolute;
+      bottom: -20px;
+      width: 70px;
+      height: 60px;
+      background: #3b2a1a;
+      border-radius: 0 0 15px 15px;
+      box-shadow: inset 0 0 10px rgba(255, 200, 150, 0.3);
+      animation: steam 2s infinite;
+    }
+
+    .scar .coffee::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 0;
+      width: 70px;
+      height: 10px;
+      background: #5a3b22;
+      border-radius: 10px 10px 0 0;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes blink {
+      0%, 90%, 100% { transform: scaleY(1); }
+      92%, 98% { transform: scaleY(0.1); }
+    }
+
+    @keyframes steam {
+      0% { box-shadow: inset 0 0 10px rgba(255, 200, 150, 0.3); }
+      50% { box-shadow: inset 0 0 20px rgba(255, 200, 150, 0.6); }
+      100% { box-shadow: inset 0 0 10px rgba(255, 200, 150, 0.3); }
+    }
+
+    /* ===== CURSOS ===== */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .course-card {
+      background: linear-gradient(145deg, #041629, #010a14);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 170, 255, 0.3);
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .course-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(0,170,255,0.15), transparent);
+      transform: translateX(-100%);
+      transition: 0.5s;
+    }
+
+    .course-card:hover::before {
+      transform: translateX(100%);
+    }
+
+    .course-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 0 40px rgba(0, 170, 255, 0.7);
+    }
+
+    .course-card h3 {
+      margin-bottom: 15px;
+      color: #00aaff;
+    }
+
+    .course-card p {
+      margin-bottom: 20px;
+      color: #cfeaff;
+    }
+
+    /* ===== INSCRIÇÃO ===== */
+    .signup-container {
+      max-width: 520px;
+      margin: 40px auto 0;
+      background: linear-gradient(145deg, #041629, #010a14);
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 0 40px rgba(0, 170, 255, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .signup-container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(0,170,255,0.15), transparent);
+      transform: translateX(-100%);
+      animation: shine 4s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      50% { transform: translateX(100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .signup-container h3 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #00aaff;
+      font-size: 24px;
+    }
+
+    .signup-container input,
+    .signup-container select {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 10px;
+      border: none;
+      margin-bottom: 15px;
+      background: #02050a;
+      color: white;
+      border: 1px solid #00aaff33;
+    }
+
+    .signup-container input:focus,
+    .signup-container select:focus {
+      outline: none;
+      border-color: #00aaff;
+      box-shadow: 0 0 10px rgba(0,170,255,0.5);
+    }
+
+    .success-msg {
+      margin-top: 20px;
+      padding: 15px;
+      background: rgba(0, 170, 255, 0.15);
+      border: 1px solid #00aaff;
+      border-radius: 12px;
+      color: #cfeaff;
+      display: none;
+      text-align: center;
+    }
+
+    /* ===== LOGIN MODAL ===== */
+    #loginModal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    #loginModal .modal {
+      background: #050b14;
+      padding: 35px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 40px rgba(0, 170, 255, 0.5);
+    }
+
+    #loginModal h3 {
+      text-align: center;
+      color: #00aaff;
+      margin-bottom: 20px;
+    }
+
+    #loginModal input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border-radius: 10px;
+      border: none;
+      background: #02050a;
+      color: white;
+      border: 1px solid #00aaff33;
+    }
+
+    #loginModal input:focus {
+      outline: none;
+      border-color: #00aaff;
+      box-shadow: 0 0 10px rgba(0,170,255,0.5);
+    }
+
+    #loginError {
+      color: #ff6b6b;
+      text-align: center;
+      margin-top: 10px;
+      display: none;
+    }
+
+    /* ===== ÁREA DO ALUNO ===== */
+    #dashboard {
+      display: none;
+      min-height: 100vh;
+      padding: 120px 8% 80px;
+      background: radial-gradient(circle at top, #06142a, #02050a);
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .dashboard-card {
+      background: linear-gradient(145deg, #041629, #010a14);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 170, 255, 0.3);
+      transition: 0.3s;
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 0 35px rgba(0, 170, 255, 0.6);
+    }
+
+    .dashboard-card h4 {
+      margin-bottom: 10px;
+      color: #00aaff;
+    }
+
+    .lessons {
+      display: none;
+      margin-top: 50px;
+    }
+
+    .lesson-card {
+      background: linear-gradient(145deg, #041629, #010a14);
+      padding: 25px;
+      border-radius: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
+      transition: 0.3s;
+    }
+
+    .lesson-card:hover {
+      transform: translateX(5px) scale(1.01);
+      box-shadow: 0 0 30px rgba(0, 170, 255, 0.6);
+    }
+
+    /* ===== PARTÍCULAS ===== */
+    .particle {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background: #00aaff;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: rise linear forwards;
+      z-index: 0;
+    }
+
+    @keyframes rise {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+      }
+      to {
+        transform: translateY(-120vh) scale(0);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .scar-container {
+        margin-top: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Nala Cursos</h1>
+    <nav>
+      <a href="#home">Início</a>
+      <a href="#courses">Cursos</a>
+      <a href="#signup">Inscreva-se</a>
+      <a onclick="openLogin()">Área do Aluno 🎓</a>
+    </nav>
+  </header>
+
+  <!-- HOME / HERO -->
+  <section id="home">
+    <div class="hero">
+      <div class="hero-text">
+        <h2>Aprenda tecnologia do <span>zero sem sair de casa 🚀</span></h2>
+        <p>
+          Cursos 100% online de informática, manutenção de computadores e programação.
+          Estude no seu ritmo com o Scar 🤖☕ como seu guia.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn btn-primary" onclick="scrollToSignup()">Quero me inscrever</button>
+          <button class="btn btn-secondary" onclick="scrollToCourses()">Ver cursos</button>
+          <button class="btn btn-secondary" onclick="openLogin()">Área do aluno 🎓</button>
+        </div>
+      </div>
+
+      <!-- SCAR ROBÔ -->
+      <div class="scar-container">
+        <div class="scar">
+          <div class="glasses">
+            <div class="glass"></div>
+            <div class="glass"></div>
+          </div>
+          <div class="face">
+            <div class="eye"></div>
+            <div class="eye"></div>
+            <div class="mouth"></div>
+          </div>
+          <div class="coffee"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURSOS -->
+  <section id="courses">
+    <h2 style="color:#00aaff; margin-bottom:20px;">📚 Nossos Cursos</h2>
+    <p style="color:#cfeaff; max-width:600px;">Escolha o curso ideal para você e comece hoje mesmo sua jornada na tecnologia.</p>
+
+    <div class="courses-grid">
+      <div class="course-card">
+        <h3>🖥️ Manutenção de Computadores</h3>
+        <p>Aprenda a montar, formatar, diagnosticar e consertar computadores do zero.</p>
+        <button class="btn btn-primary" onclick="selectCourse('Manutenção de Computadores')">Quero esse</button>
+      </div>
+
+      <div class="course-card">
+        <h3>💡 Informática Básica</h3>
+        <p>Domine o uso do computador, internet, Word, Excel e ferramentas essenciais.</p>
+        <button class="btn btn-primary" onclick="selectCourse('Informática Básica')">Quero esse</button>
+      </div>
+
+      <div class="course-card">
+        <h3>🚀 Informática Avançada</h3>
+        <p>Aprenda produtividade, sistemas, nuvem e ferramentas profissionais.</p>
+        <button class="btn btn-primary" onclick="selectCourse('Informática Avançada')">Quero esse</button>
+      </div>
+
+      <div class="course-card">
+        <h3>💻 Programação</h3>
+        <p>Do zero ao avançado em lógica, web, apps e sistemas modernos.</p>
+        <button class="btn btn-primary" onclick="selectCourse('Programação')">Quero esse</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSCRIÇÃO -->
+  <section id="signup">
+    <h2 style="color:#00aaff; margin-bottom:20px;">✨ Inscreva-se Agora</h2>
+    <p style="color:#cfeaff; max-width:600px;">Preencha seus dados e receba acesso imediato à área do aluno.</p>
+
+    <div class="signup-container">
+      <h3>Cadastro do Aluno</h3>
+      <form id="signupForm">
+        <input type="text" id="name" placeholder="Seu nome" required />
+        <input type="email" id="email" placeholder="Seu e-mail" required />
+        <select id="course" required>
+          <option value="">Selecione seu curso</option>
+          <option value="Manutenção de Computadores">Manutenção de Computadores</option>
+          <option value="Informática Básica">Informática Básica</option>
+          <option value="Informática Avançada">Informática Avançada</option>
+          <option value="Programação">Programação</option>
+        </select>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Criar minha conta 🚀</button>
+      </form>
+
+      <div class="success-msg" id="successMsg"></div>
+    </div>
+  </section>
+
+  <!-- LOGIN MODAL -->
+  <div id="loginModal">
+    <div class="modal">
+      <h3>Área do Aluno 🎓</h3>
+      <input id="loginEmail" placeholder="E-mail" />
+      <input id="loginPassword" type="password" placeholder="Senha" />
+      <button class="btn btn-primary" style="width:100%;" onclick="loginUser()">Entrar</button>
+      <p id="loginError">E-mail ou senha inválidos</p>
+      <button class="btn btn-secondary" style="width:100%; margin-top:10px;" onclick="closeLogin()">Fechar</button>
+    </div>
+  </div>
+
+  <!-- DASHBOARD / ÁREA DO ALUNO -->
+  <section id="dashboard">
+    <h2 style="color:#00aaff; margin-bottom:10px;">🎓 Área do Aluno</h2>
+    <p id="studentName" style="margin-bottom:20px; color:#cfeaff;">Olá!</p>
+
+    <div class="dashboard-grid">
+      <div class="dashboard-card">
+        <h4>📚 Meu Curso</h4>
+        <p id="dashboardCourse">---</p>
+        <button class="btn btn-primary" onclick="openLessons()">Ver aulas</button>
+      </div>
+
+      <div class="dashboard-card">
+        <h4>📈 Progresso</h4>
+        <p><span id="progress">0</span>% concluído</p>
+        <button class="btn btn-secondary" onclick="increaseProgress()">Marcar aula como concluída</button>
+      </div>
+
+      <div class="dashboard-card">
+        <h4>🔐 Conta</h4>
+        <p>Email: <span id="studentEmail">---</span></p>
+        <button class="btn btn-secondary" onclick="logout()">Sair</button>
+      </div>
+    </div>
+
+    <!-- AULAS -->
+    <div class="lessons" id="lessons">
+      <h3 style="color:#00aaff; margin-bottom:20px;">📖 Aulas do Curso</h3>
+
+      <div class="lesson-card">
+        <h4>📘 Aula 1 - Introdução</h4>
+        <p>Boas-vindas ao curso e visão geral.</p>
+        <button class="btn btn-primary">Assistir</button>
+      </div>
+
+      <div class="lesson-card">
+        <h4>📘 Aula 2 - Fundamentos</h4>
+        <p>Aprendendo os conceitos principais.</p>
+        <button class="btn btn-primary">Assistir</button>
+      </div>
+
+      <div class="lesson-card">
+        <h4>📘 Aula 3 - Prática</h4>
+        <p>Mão na massa com exercícios.</p>
+        <button class="btn btn-primary">Assistir</button>
+      </div>
+
+      <div class="lesson-card">
+        <h4>📘 Aula 4 - Projeto Final</h4>
+        <p>Desenvolvendo um projeto real.</p>
+        <button class="btn btn-primary">Assistir</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    /* =========================================================
+       BANCO DE DADOS LOCAL (SIMULADO COM localStorage)
+    ========================================================= */
+
+    const USERS_KEY = 'nalaUsers';
+    const SESSION_KEY = 'nalaSession';
+
+    function getUsers() {
+      return JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+    }
+
+    function saveUsers(users) {
+      localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    }
+
+    /* =========================================================
+       NAVEGAÇÃO SUAVE
+    ========================================================= */
+
+    function scrollToSignup() {
+      document.getElementById('signup').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function scrollToCourses() {
+      document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function selectCourse(courseName) {
+      scrollToSignup();
+      setTimeout(() => {
+        document.getElementById('course').value = courseName;
+      }, 600);
+    }
+
+    /* =========================================================
+       LOGIN MODAL (CORRIGIDO: openLogin AGORA EXISTE)
+    ========================================================= */
+
+    function openLogin() {
+      document.getElementById('loginModal').style.display = 'flex';
+      document.getElementById('loginError').style.display = 'none';
+    }
+
+    function closeLogin() {
+      document.getElementById('loginModal').style.display = 'none';
+    }
+
+    /* =========================================================
+       CADASTRO
+    ========================================================= */
+
+    const form = document.getElementById('signupForm');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const course = document.getElementById('course').value;
+
+      const users = getUsers();
+
+      if (users.some(u => u.email === email)) {
+        successMsg.style.display = 'block';
+        successMsg.innerHTML = '⚠️ Este e-mail já está cadastrado. Use a Área do Aluno para entrar.';
+        return;
+      }
+
+      const password = Math.random().toString(36).slice(-8);
+
+      const user = { name, email, course, password, progress: 0 };
+      users.push(user);
+      saveUsers(users);
+
+      successMsg.style.display = 'block';
+      successMsg.innerHTML = `✅ Cadastro realizado!<br><br>
+        <strong>Login:</strong> ${email}<br>
+        <strong>Senha:</strong> ${password}<br><br>
+        Guarde esses dados para acessar sua área do aluno 🎓`;
+
+      form.reset();
+
+      setTimeout(() => openLogin(), 2000);
+    });
+
+    /* =========================================================
+       LOGIN
+    ========================================================= */
+
+    function loginUser() {
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value.trim();
+
+      const users = getUsers();
+      const user = users.find(u => u.email === email && u.password === password);
+
+      if (!user) {
+        document.getElementById('loginError').style.display = 'block';
+        return;
+      }
+
+      localStorage.setItem(SESSION_KEY, JSON.stringify(user));
+      closeLogin();
+      showDashboard(user);
+    }
+
+    /* =========================================================
+       DASHBOARD / ÁREA DO ALUNO
+    ========================================================= */
+
+    function showDashboard(user) {
+      document.querySelectorAll('section').forEach(s => s.style.display = 'none');
+      document.getElementById('dashboard').style.display = 'block';
+      document.getElementById('studentName').innerText = `Olá, ${user.name} 👋`;
+      document.getElementById('studentEmail').innerText = user.email;
+      document.getElementById('dashboardCourse').innerText = user.course;
+      document.getElementById('progress').innerText = user.progress || 0;
+    }
+
+    function logout() {
+      localStorage.removeItem(SESSION_KEY);
+      location.reload();
+    }
+
+    function openLessons() {
+      const lessons = document.getElementById('lessons');
+      lessons.style.display = 'block';
+      lessons.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function increaseProgress() {
+      const session = JSON.parse(localStorage.getItem(SESSION_KEY));
+      if (!session) return;
+
+      session.progress = Math.min(100, (session.progress || 0) + 25);
+
+      const users = getUsers();
+      const idx = users.findIndex(u => u.email === session.email);
+      if (idx !== -1) {
+        users[idx].progress = session.progress;
+        saveUsers(users);
+      }
+
+      localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+      document.getElementById('progress').innerText = session.progress;
+    }
+
+    /* =========================================================
+       AUTO LOGIN SE JÁ EXISTIR SESSÃO
+    ========================================================= */
+
+    const session = JSON.parse(localStorage.getItem(SESSION_KEY));
+    if (session) {
+      showDashboard(session);
+    }
+
+    /* =========================================================
+       PARTÍCULAS DE FUNDO
+    ========================================================= */
+
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.bottom = '-10px';
+      const duration = Math.random() * 10 + 6;
+      particle.style.animationDuration = duration + 's';
+      document.body.appendChild(particle);
+
+      setTimeout(() => particle.remove(), duration * 1000);
+    }
+
+    setInterval(createParticle, 200);
+
+    /* =========================================================
+       TESTES SIMPLES (DEV)
+       - Não interferem no uso normal
+       - Podem ser removidos em produção
+    ========================================================= */
+
+    console.assert(typeof openLogin === 'function', 'Teste: openLogin deve existir');
+    console.assert(typeof loginUser === 'function', 'Teste: loginUser deve existir');
+    console.assert(typeof showDashboard === 'function', 'Teste: showDashboard deve existir');
+  </script>
+</body>
+</html
